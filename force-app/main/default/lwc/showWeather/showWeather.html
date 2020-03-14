@@ -1,0 +1,28 @@
+<template>
+    <lightning-card  title="Display Weather By City">
+        <lightning-button label="Show Weather" onclick={handleLoad}></lightning-button>
+
+        <p class="slds-p-horizontal_small">
+            <lightning-input type="text" label="Enter City Name" data-my-id="in1" 
+                value={inputCity} onchange={handleStringChange}></lightning-input>
+            
+            <br/>
+                <template if:true={response}>
+                    <p> City Name : {response.city}</p>
+                    <p> Country Name : {response.country}</p>
+                    <p> Temperature : {response.temperature}</p>
+                    <p> Description : {response.weatherDesc}</p>
+                </template>
+            
+        </p>
+
+        <p slot="footer">
+            <template if:true={response}>
+                {response.error}
+             </template>
+             <template if:true={error}>
+                {error}
+             </template>
+        </p>
+    </lightning-card>
+</template>
